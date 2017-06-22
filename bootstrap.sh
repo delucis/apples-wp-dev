@@ -132,6 +132,14 @@ fi
 # POPULATE DATABASE CONTENT #
 #############################
 
+delete_post () {
+  post="$1"
+  if [[ $(wp @v post get $post --field=ID) -eq $post ]]; then
+    echo "Deleting post with ID of $post..."
+    wp @v post delete $post --force
+  fi
+}
+
 # Clean default generated content
 print_color "Deleting generic WordPress content..."
 wp @v post delete 1 --force # Delete ‘Hello world!’ post
