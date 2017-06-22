@@ -16,12 +16,12 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, path: "files/scripts/setup.sh"
 
   # setup virtual hostname and provision local IP
-  config.vm.hostname = "vagrantpress.dev"
+  config.vm.hostname = "claraiannotta.dev"
   config.vm.network :private_network, :ip => "192.168.50.4"
 
   # add virtual hostname to /etc/hosts
   if Vagrant.has_plugin?('HostsUpdater')
-    config.hostsupdater.aliases = %w{www.vagrantpress.dev}
+    config.hostsupdater.aliases = %w{www.claraiannotta.dev}
     config.hostsupdater.remove_on_suspend = true
   elsif Vagrant.has_plugin?('HostManager')
     config.hostmanager.enabled = true
@@ -29,7 +29,7 @@ Vagrant.configure("2") do |config|
     config.hostmanager.manage_guest = true
     config.hostmanager.ignore_private_ip = false
     config.hostmanager.include_offline = true
-    config.hostmanager.aliases = %w{www.vagrantpress.dev}
+    config.hostmanager.aliases = %w{www.claraiannotta.dev}
   else
     raise "Vagrantpress requires vagrant-hostsupdater or vagrant-hostmanager plugin"
   end

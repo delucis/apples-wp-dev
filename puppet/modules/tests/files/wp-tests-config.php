@@ -33,8 +33,8 @@ define( 'DB_COLLATE', '' );
 
 $table_prefix  = 'wptests_';   // Only numbers, letters, and underscores please!
 
-define( 'WP_TESTS_DOMAIN', 'vagrantpress.dev' );
-define( 'WP_TESTS_EMAIL', 'nobody@vagrantpress.dev' );
+define( 'WP_TESTS_DOMAIN', 'claraiannotta.dev' );
+define( 'WP_TESTS_EMAIL', 'nobody@claraiannotta.dev' );
 define( 'WP_TESTS_TITLE', 'WordPress automated tests' );
 
 define( 'WP_PHP_BINARY', 'php' );
