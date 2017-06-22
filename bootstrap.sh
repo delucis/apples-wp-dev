@@ -142,8 +142,6 @@ delete_post () {
 
 # Clean default generated content
 print_color "Deleting generic WordPress content..."
-wp @v post delete 1 --force # Delete ‘Hello world!’ post
-wp @v post delete 2 --force # Delete sample page
 # Import exported XML from claraiannotta.com
 print_color "Importing claraiannotta.com content..."
 if [ -d "content" ]; then
@@ -152,3 +150,6 @@ else
   echo "Can’t find directory: content. Fatal error…"
   exit 1
 fi
+delete_post 1 # Delete ‘Hello world!’ post
+delete_post 2 # Delete sample page
+
