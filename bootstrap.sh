@@ -16,6 +16,19 @@ load_plugin () {
   fi
 }
 
+load_theme () {
+  theme="$1"
+  version=""
+  if [[ $2 ]]; then version="--version=$2"; fi
+  print_color "Installing $theme WordPress theme..."
+  if ! wp @v theme is-installed $theme; then
+    wp @v theme install $theme $version && echo "$theme WordPress theme installed."
+  else
+    echo "$theme WordPress theme is already installed, skipping..."
+  fi
+}
+
+
 # Check all required CLIs are available
 dependencies=( wget wp git unzip )
 for dependency in "${dependencies[@]}"; do
