@@ -109,13 +109,22 @@ fi
 load_theme twentytwelve 1.1.1
 
 # Install & activate Apples theme
-print_color "Installing and activating apples WordPress theme..."
-git clone $THEME_REMOTE_URL wordpress/wp-content/themes/apples
-if [ -d "wordpress/wp-content/themes/apples" ]; then
+print_color "Installing apples WordPress theme..."
+if ! wp @v theme is-installed apples; then
+  echo "Cloning apples WordPress theme..."
+  git clone $THEME_REMOTE_URL wordpress/wp-content/themes/apples
+  if [ -d "wordpress/wp-content/themes/apples" ]; then
+    echo "Activating apples WordPress theme..."
+    wp @v theme activate apples
+  else
+    echo "Can’t find directory: wordpress/wp-content/themes/apples. Fatal error…"
+    exit 1
+  fi
+elif [[ ! $(wp @v theme list --status=active --field=name) = "apples" ]]; then
+  echo "apples WordPress theme is already installed but inactive, activating..."
   wp @v theme activate apples
 else
-  echo "Can’t find directory: wordpress/wp-content/themes/apples. Fatal error…"
-  exit 1
+  echo "apples WordPress theme is already installed & activated, skipping..."
 fi
 
 
