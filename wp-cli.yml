@@ -1,0 +1,5 @@
+debug: true
+url: claraiannotta.dev
+
+@v:
+  ssh: vagrant@claraiannotta.dev/vagrant/wordpress
