@@ -1,6 +1,6 @@
 #!/bin/bash
 
-print_color () { tput setab 7; tput setaf 0; echo "$1"; tput sgr0; }
+print_color () { tput sgr 0 1; tput bold; printf "$1"; tput sgr0; printf "\n"; }
 
 # Check all required CLIs are available
 dependencies=( wget wp git unzip )
