@@ -96,6 +96,9 @@ load_plugin wordpress-importer
 # THEME INSTALLATION & ACTIVATION #
 ###################################
 
+# Install Twenty Twelve theme
+load_theme twentytwelve 1.1.1
+
 # Set remote URL
 if [[ $CLONE_STYLE == "https" ]]; then
   THEME_REMOTE_URL="https://github.com/delucis/apples.git"
@@ -104,9 +107,6 @@ elif [[ $CLONE_STYLE == "ssh" ]]; then
 else
   THEME_REMOTE_URL="git@github.com:delucis/apples.git"
 fi
-
-# Install Twenty Twelve theme
-load_theme twentytwelve 1.1.1
 
 # Install & activate Apples theme
 print_color "Installing apples WordPress theme..."
