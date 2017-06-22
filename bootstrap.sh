@@ -80,8 +80,12 @@ if [ ! -d "wordpress/wp-content/plugins/advanced-custom-fields-pro" ]; then
 else
   echo "Advanced Custom Fields Pro has already been downloaded, skipping download..."
 fi
-wp @v plugin activate advanced-custom-fields-pro
-
+if [[ $(wp @v plugin get advanced-custom-fields-pro --field=status) = "inactive" ]]; then
+  echo "Advanced Custom Fields Pro plugin is already installed but inactive, activating..."
+  wp @v plugin activate advanced-custom-fields-pro
+else
+  echo "Advanced Custom Fields Pro is already installed & activated, skipping..."
+fi
 
 load_plugin all-in-one-seo-pack
 load_plugin google-sitemap-generator
