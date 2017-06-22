@@ -102,8 +102,7 @@ else
 fi
 
 # Install Twenty Twelve theme
-print_color "Installing Twenty Twelve WordPress theme..."
-wp @v theme install twentytwelve --version=1.1.1
+load_theme twentytwelve 1.1.1
 
 # Install & activate Apples theme
 print_color "Installing and activating apples WordPress theme..."
