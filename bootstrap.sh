@@ -2,6 +2,20 @@
 
 print_color () { tput sgr 0 1; tput bold; printf "$1"; tput sgr0; printf "\n"; }
 
+load_plugin () {
+  plugin="$1"
+  print_color "Installing $plugin plugin..."
+  if ! wp @v plugin is-installed $plugin; then
+    echo "Downloading and installing $plugin WordPress plugin..."
+    wp @v plugin install $plugin --activate
+  elif [[ $(wp @v plugin get $plugin --field=status) = "inactive" ]]; then
+    echo "$plugin WordPress plugin is already installed but inactive, activating..."
+    wp @v plugin activate $plugin
+  else
+    echo "$plugin WordPress plugin is already installed & activated, skipping..."
+  fi
+}
+
 # Check all required CLIs are available
 dependencies=( wget wp git unzip )
 for dependency in "${dependencies[@]}"; do
