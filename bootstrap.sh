@@ -82,17 +82,10 @@ else
 fi
 wp @v plugin activate advanced-custom-fields-pro
 
-# All in One SEO Pack
-print_color "Installing All in One SEO Pack plugin..."
-wp @v plugin install all-in-one-seo-pack --activate
 
-# Google XML Sitemaps
-print_color "Installing Google XML Sitemaps plugin..."
-wp @v plugin install google-sitemap-generator --activate
-
-# WordPress Importer
-print_color "Installing WordPress Importer plugin..."
-wp @v plugin install wordpress-importer --activate
+load_plugin all-in-one-seo-pack
+load_plugin google-sitemap-generator
+load_plugin wordpress-importer
 
 
 ###################################
